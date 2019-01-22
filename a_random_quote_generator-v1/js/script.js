@@ -93,13 +93,17 @@ function getRandomQuote(){
      they are added to the HTML string.
    - set the `innerHTML` of the `quote-box` div to the HTML string.
 ***/
+
+  var htmlString = '';
+
 function printQuote() {
   var currentQuote = getRandomQuote();
-  var htmlString = '';
+  let htmlString = '';
   let htmlString = '<p class="quote">' + currentQuote.quotation + '</p>';
+  //return htmlString;
   document.getElementById("quote-box").innerHTML = htmlString;
 }
-
+//  document.getElementById("quote-box").innerHTML = htmlString;
 
 /***
   When the "Show another quote" button is clicked, the event listener
