@@ -94,17 +94,17 @@ function getRandomQuote(){
    - set the `innerHTML` of the `quote-box` div to the HTML string.
 ***/
 
-  var htmlString = '';
+//  var htmlString = '';
 
 function printQuote() {
   var currentQuote = getRandomQuote();
-  let htmlString = '';
+  var htmlString = '';
   let htmlString = '<p class="quote">' + currentQuote.quotation + '</p>';
   //return htmlString;
   document.getElementById("quote-box").innerHTML = htmlString;
 }
 //  document.getElementById("quote-box").innerHTML = htmlString;
-
+//    printQuote();
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
