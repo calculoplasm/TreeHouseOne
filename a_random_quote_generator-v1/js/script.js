@@ -79,7 +79,7 @@ function rangedRandomInteger (lowerLimit, upperLimit){
 // returns a random object from quotes array
 function getRandomQuote(){
   return quotes[rangedRandomInteger(0,quotes.length)];
-//return quotes[1];  added this to remove rangedRandomInteger from execution for debugging
+//return quotes[1];  //added this to remove rangedRandomInteger from execution for debugging
 }
 
 
@@ -99,7 +99,7 @@ function getRandomQuote(){
 function printQuote() {
   var currentQuote = getRandomQuote();
   var htmlString = '';
-  let htmlString = '<p class="quote">' + currentQuote.quotation + '</p>';
+   htmlString = '<p class="quote">' + currentQuote.quotation + '</p>';
   //return htmlString;
   document.getElementById("quote-box").innerHTML = htmlString;
 }
