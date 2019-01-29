@@ -16,9 +16,7 @@ FSJS project 1 - A Random Quote Generator
       quote object.
 ***/
 
-/***
-Will this coneect to github !!!!!!!?
-***/
+
 var quotes = [
 {
   quotation: "Do or do not. There is no try.",
@@ -79,7 +77,6 @@ function rangedRandomInteger (lowerLimit, upperLimit){
 // returns a random object from quotes array
 function getRandomQuote(){
   return quotes[rangedRandomInteger(0,quotes.length)];
-//return quotes[1];  //added this to remove rangedRandomInteger from execution for debugging
 }
 
 
@@ -100,11 +97,18 @@ function printQuote() {
   var currentQuote = getRandomQuote();
   var htmlString = '';
    htmlString = '<p class="quote">' + currentQuote.quotation + '</p>';
-  //return htmlString;
+   htmlString += ('<p class="source">' + ' ' + currentQuote.source);
+   if(currentQuote.citation){
+      htmlString += ('<span class="citation">' + currentQuote.citation + '</span>');
+    }
+    if(currentQuote.year){
+     htmlString += '<span class="year">' + currentQuote.year + '</span>';
+   }
+   htmlString += '</p>';
+
   document.getElementById("quote-box").innerHTML = htmlString;
 }
-//  document.getElementById("quote-box").innerHTML = htmlString;
-//    printQuote();
+
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
