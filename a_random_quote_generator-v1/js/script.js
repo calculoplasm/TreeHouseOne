@@ -16,7 +16,7 @@ FSJS project 1 - A Random Quote Generator
       quote object.
 ***/
 
-
+    
 var quotes = [
 {
   quotation: "Do or do not. There is no try.",
