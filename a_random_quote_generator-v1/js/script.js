@@ -160,14 +160,19 @@ function printQuote() {
    htmlString += '</p>';
 //prints quote and source, and citation and year if applicable to html page
   document.getElementById("quote-box").innerHTML = htmlString;
-//changes the background color to a random rgb value (button stays green unless hovered over)
-  document.getElementById("body").style.background = getRandomColor();
 
+  var randomRGB = getRandomColor();
+//changes the background color to a random rgb value (button stays green unless hovered over)
+  document.getElementById("body").style.background = randomRGB;
+//button changes to  a different random color
+  document.getElementById("loadQuote").style.background = randomRGB;
+
+  //  automatically refresh quote after 30 seconds (EXTRA CREDIT)
+  setInterval(printQuote,30000);
 
 }
 
-//  automatically refresh quote after 30 seconds (EXTRA CREDIT)
-setInterval(printQuote,30000);
+
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
