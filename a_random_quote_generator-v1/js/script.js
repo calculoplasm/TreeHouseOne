@@ -135,10 +135,21 @@ function getRandomColor(){
   return color;
 }
 
+function getRandomColorAlpha(){
+  var r = rangedRandomInteger(0,256);
+  var g = rangedRandomInteger(0,256);
+  var b = rangedRandomInteger(0,256);
 
+  var color = 'rgba(' +  r + ', ' + g + ', ' + b + ', 0.25)';
+  return color;
+}
+// refresh interval needs to be global scope
+var refreshQuoteInterval = 0;
 // prints the quote to the screen
 
 function printQuote() {
+//rests timer on auto refresh quote timer
+  clearInterval(refreshQuoteInterval);
 //get a random element of quotes object array
   var currentQuote = getRandomQuote();
 //clear the string
@@ -161,14 +172,19 @@ function printQuote() {
 //prints quote and source, and citation and year if applicable to html page
   document.getElementById("quote-box").innerHTML = htmlString;
 
+
+//originally had the button and background the same color so this variable was needed
+//I liked them different colors and want the button to be transparent
+//so I added a new function.  Leaving randomRGB variable in to make it easy to revert
+
   var randomRGB = getRandomColor();
 //changes the background color to a random rgb value (button stays green unless hovered over)
   document.getElementById("body").style.background = randomRGB;
-//button changes to  a different random color
-  document.getElementById("loadQuote").style.background = randomRGB;
+//button changes to  different random color as background
+  document.getElementById("loadQuote").style.background = getRandomColorAlpha();
 
   //  automatically refresh quote after 30 seconds (EXTRA CREDIT)
-  setInterval(printQuote,30000);
+   refreshQuoteInterval = setInterval(printQuote,30000);
 
 }
 
