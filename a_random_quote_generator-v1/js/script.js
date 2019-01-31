@@ -16,10 +16,10 @@ FSJS project 1 - A Random Quote Generator
       quote object.
 ***/
 
-    
+
 var quotes = [
 {
-  quotation: "Do or do not. There is no try.",
+  quotation: "Do or do not. There is no try.qqqqqqqqq qqqqqqq qdegre rthrth rhtrhtrthwr htsr htswrt hrwhtsw rhtwr htrwthwrhtwrthwrhtht",
   source: "Yoda",
   citation: "Star Wars: The Empire Strikes Back",
   year: "1980",
@@ -70,7 +70,11 @@ random integer within ranges function (pulled from getRandomQuote function and
 made it more versatile in case I want to use more randomly generated integers)
 */
 function rangedRandomInteger (lowerLimit, upperLimit){
-  return Math.floor(Math.random() * (upperLimit-lowerLimit+1))+(lowerLimit);
+  var min = Math.ceil(lowerLimit);
+  var max = Math.floor(upperLimit);
+  var result =  Math.floor(Math.random() * (max-min))+min;
+  console.log(result);
+  return result;
 }
 
 
@@ -79,7 +83,15 @@ function getRandomQuote(){
   return quotes[rangedRandomInteger(0,quotes.length)];
 }
 
+// returns a random rgb value
+function getRandomColor(){
+  var r = rangedRandomInteger(0,256);
+  var g = rangedRandomInteger(0,256);
+  var b = rangedRandomInteger(0,256);
 
+  var color = 'rgb(' +  r + ', ' + g + ', ' + b + ')';
+  return color;
+}
 
 /***
   Create the `printQuote` function to:
@@ -91,15 +103,15 @@ function getRandomQuote(){
    - set the `innerHTML` of the `quote-box` div to the HTML string.
 ***/
 
-//  var htmlString = '';
+
 
 function printQuote() {
   var currentQuote = getRandomQuote();
   var htmlString = '';
    htmlString = '<p class="quote">' + currentQuote.quotation + '</p>';
-   htmlString += ('<p class="source">' + ' ' + currentQuote.source);
+   htmlString += '<p class="source">' + ' ' + currentQuote.source;
    if(currentQuote.citation){
-      htmlString += ('<span class="citation">' + currentQuote.citation + '</span>');
+      htmlString += '<span class="citation">' + currentQuote.citation + '</span>';
     }
     if(currentQuote.year){
      htmlString += '<span class="year">' + currentQuote.year + '</span>';
@@ -107,6 +119,7 @@ function printQuote() {
    htmlString += '</p>';
 
   document.getElementById("quote-box").innerHTML = htmlString;
+  document.getElementById("body").style.background = getRandomColor();
 }
 
 /***
